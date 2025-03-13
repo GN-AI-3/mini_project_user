@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "../styles/Home.css";
 
@@ -111,6 +111,7 @@ const Home = () => {
     formData.append("file", file);
 
     try {
+      await fetch("http://localhost:8000/test");
       // 백엔드 API 호출 (실제 엔드포인트로 변경 필요)
       // const response = await fetch('/api/analyze', {
       //   method: 'POST',
