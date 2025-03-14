@@ -112,12 +112,13 @@ const Home = () => {
     formData.append("file", file);
 
     try {
-      // 백엔드 API 호출 (실제 엔드포인트로 변경 필요)
-      // const response = await fetch('/api/analyze', {
-      //   method: 'POST',
-      //   body: formData
-      // });
-      // const data = await response.json();
+      const response = await fetch("http://localhost:8000/process-pdf", {
+        method: "POST",
+        body: formData,
+      });
+
+      const data = await response.json();
+      console.log(data);
 
       // 실제 API 연동 시 주석 해제하고 아래 코드는 제거
       setTimeout(() => {
