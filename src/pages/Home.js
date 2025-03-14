@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "../styles/Home.css";
+import DrawingApp from "./DrawingApp";
 
 const Home = () => {
   const [file, setFile] = useState(null);
@@ -138,7 +139,7 @@ const Home = () => {
               fileName: file.name,
               // 테스트용 더미 데이터
               results: {
-                summary: "학생기록부 분석 결과입니다.",
+                summary: "생활기록부 분석 결과입니다.",
                 details: ["활동내역 1", "활동내역 2", "활동내역 3"],
                 recommendations: ["추천사항 1", "추천사항 2"],
               },
@@ -162,16 +163,20 @@ const Home = () => {
 
   return (
     <div className="home-container">
-      <h1 className="main-title">학생기록부 분석 시스템</h1>
+      <div className="drawing-background">
+        <DrawingApp />
+      </div>
+
+      <div className="overlay-content">
+      <h1 className="main-title">나는 어떤 고등학생?</h1>
       <div className="instructions">
         <p className="instruction-text">
-          <span className="instruction-icon">ℹ️</span>
-          <strong>사용 안내:</strong> PDF 형식의 학생기록부 파일을 업로드하여
-          분석할 수 있습니다.
+          {/* <span className="instruction-icon">ℹ️</span> */}
+          학교생활기록부를 이용해 고등학교 시절의 나를 알아볼 수 있어요.
           <br />
+          <br/>
           <span className="warning-text">
-            ※ 학생기록부 외에 다른 PDF 파일을 올릴 경우, 원하는 결과값이 나오지
-            않을 수 있습니다.
+            ※ '고등학교' 생활기록부가 아니거나, 재학 중인 경우 결과가 만족스럽지 않을 수도 있어요. ※<br/>
           </span>
         </p>
       </div>
@@ -200,7 +205,8 @@ const Home = () => {
                 className="upload-button"
                 onClick={handleButtonClick}
               >
-                <span className="plus-icon">+</span> PDF로 시작
+                {/* <span className="plus-icon">+</span>  */}
+                파일 찾기
               </button>
               <p className="drag-text">또는 여기에 PDF 파일 끌어다 놓기</p>
             </div>
@@ -238,22 +244,38 @@ const Home = () => {
               </div>
             )}
           </div>
-
+          <div className="go-to-24">
+            <span>내 생활기록부를 보고 싶다면?</span>
+            <button
+              type="button"
+              className="go-to-24-button"
+              onClick={() => window.open("https://www.gov.kr/mw/AA020InfoCappView.do?HighCtgCD=A04001;A04007&CappBizCD=13410000019&tp_seq=01", "_blank")}
+            >
+              <img 
+                src="button.png" 
+                className="img-button" 
+                alt="정부24에서 생활기록부 발급받기"
+              />
+            </button>
+          </div>
           <button
             type="submit"
             className="analyze-button"
             disabled={!file || loading}
           >
-            {loading ? "분석 중..." : "분석 시작하기"}
+            {loading ? "생활기록부를 분석 중이에요." : "분석 시작!"}
           </button>
         </form>
       </div>
-
+      </div>
       {loading && (
         <div className="loading-overlay">
           <div className="loading-content">
             <div className="loading-spinner"></div>
-            <p className="loading-text">학생기록부를 분석 중입니다...</p>
+            <p className="loading-text">생활기록부를 분석 중입니다...</p>
+            <p className="tip">
+              TIP: 알고 계셨나요? 기다리는 동안 배경에 낙서를 하실 수 있답니다.
+              </p>
             <div className="progress-container">
               <div
                 className="progress-bar"
