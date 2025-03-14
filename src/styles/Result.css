@@ -176,7 +176,7 @@
   transform: rotate(3deg);
   position: absolute;
   left: 2%;
-  top: 50%;
+  top: 20%;
   font-size: 50px;
 }
 .blackboardEraser-img{
@@ -185,7 +185,14 @@
     bottom: 13%;
     right: 0%;
 }
-
+.BlackboardGraffiti-img{
+  position: absolute;
+  width: 40%;
+  left: -5%;
+  bottom: -10%;
+  rotate: inherit;
+  transform: rotate(15deg);
+}
 
 @media (max-width: 600px) {
   .result-container {

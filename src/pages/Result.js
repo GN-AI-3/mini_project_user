@@ -4,6 +4,7 @@ import html2canvas from "html2canvas";  // html2canvas 임포트
 import "../styles/Result.css";
 import blackboardEraser from "../images/blackboardEraser.png"; // 이미지 import
 import testImage from "../images/test.png"; // 이미지 import
+import BlackboardGraffiti from "../images/Blackboard-graffiti.png"; // 이미지 import
 
 const Result = () => {
   const navigate = useNavigate();
@@ -65,7 +66,13 @@ const Result = () => {
   return (
     <div className="result">
       <p className="noisy-person-text">떠든 사람 : ㅁㅁㅁ</p>
-      <p className="pranksters-person-text">장난친 사람 : ㅁㅁㅁ</p>
+      <p className="pranksters-person-text">
+  장난친 사람 : ㅁㅁㅁ<br />
+ 
+</p>
+<img className="BlackboardGraffiti-img" src={BlackboardGraffiti} alt="My Image" />
+      
+ 
       <img className="blackboardEraser-img" src={blackboardEraser} alt="My Image" />
       
       <div className="result-container">
