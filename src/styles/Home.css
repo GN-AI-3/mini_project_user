@@ -19,7 +19,7 @@ body {
 
 .main-title {
   text-align: center;
-  color: #333;
+  color: #fff;
   margin-bottom: 20px;
   font-size: 2.5rem;
 }
@@ -29,11 +29,11 @@ body {
   background-color: #f8f9ff;
   border-radius: 8px;
   padding: 15px 20px;
-  border-left: 4px solid #4b0aff;
   max-width: 100%;
 }
 
 .instruction-text {
+  text-align: center;
   font-size: 15px;
   line-height: 1.6;
   color: #555;
@@ -48,7 +48,6 @@ body {
 .warning-text {
   color: #e74c3c;
   font-weight: 500;
-  display: inline-block;
   margin-top: 5px;
 }
 
@@ -59,6 +58,7 @@ body {
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
   width: 350px;
   max-width: 100%;
+  display: contents;
 }
 
 .file-upload-area {
@@ -148,48 +148,6 @@ body {
   margin-top: 15px;
 }
 
-.file-badge {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 5px 10px;
-  background-color: #f0f7ff;
-  border-radius: 6px;
-  border: 1px solid #d0e3ff;
-}
-
-.file-icon {
-  flex-shrink: 0;
-  margin-right: 8px;
-}
-
-.selected-file-name {
-  flex-grow: 1;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  font-size: 14px;
-  color: #333;
-  text-align: left;
-}
-
-.remove-file {
-  background: none;
-  border: none;
-  color: #ff4d4f;
-  font-size: 20px;
-  font-weight: bold;
-  cursor: pointer;
-  padding: 0 8px;
-  transition: all 0.2s;
-  flex-shrink: 0;
-}
-
-.remove-file:hover {
-  color: #ff1f1f;
-  transform: scale(1.2);
-}
-
 .analyze-button {
   width: 100%;
   padding: 15px;
@@ -225,16 +183,6 @@ body {
   z-index: 1000;
 }
 
-.loading-content {
-  background-color: white;
-  border-radius: 12px;
-  padding: 40px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-  text-align: center;
-  max-width: 400px;
-  width: 90%;
-}
-
 .loading-spinner {
   width: 60px;
   height: 60px;
@@ -243,35 +191,6 @@ body {
   border-radius: 50%;
   animation: spin 1s linear infinite;
   margin: 0 auto 20px;
-}
-
-.loading-text {
-  font-size: 18px;
-  font-weight: 500;
-  color: #333;
-  margin-bottom: 20px;
-}
-
-.progress-container {
-  width: 100%;
-  height: 8px;
-  background-color: #f0f0f0;
-  border-radius: 4px;
-  overflow: hidden;
-  margin-bottom: 10px;
-}
-
-.progress-bar {
-  height: 100%;
-  background: linear-gradient(90deg, #4b0aff, #7a43ff);
-  border-radius: 4px;
-  transition: width 0.2s ease;
-}
-
-.progress-text {
-  font-size: 14px;
-  color: #666;
-  margin: 0;
 }
 
 @keyframes spin {
@@ -283,54 +202,44 @@ body {
   }
 }
 
+.drawing-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 0; /* Behind UI but still interactive */
+  pointer-events: auto; /* Allow drawing */
+}
+
+.overlay-content {
+  position: relative;
+  z-index: 1; /* Ensure UI is above the background */
+  background: transparent;
+  padding: 20px;
+  border-radius: 10px;
+  pointer-events: auto; /* Allow UI interactions */
+  margin-top: -200px;
+}
+
+.img-button {
+  width: 100px;
+  height: 25px;
+}
+
 @media (max-width: 600px) {
   .home-container {
     padding: 20px 15px;
   }
-
   .main-title {
     font-size: 2rem;
-    margin-bottom: 15px;
   }
-
-  .instructions {
-    padding: 12px 15px;
-    margin-bottom: 20px;
-    max-width: 100%;
-  }
-
-  .instruction-text {
-    font-size: 14px;
-  }
-
   .upload-form {
     padding: 20px;
     width: 100%;
   }
-
   .file-upload-area {
     padding: 40px 15px;
     min-height: 200px;
-  }
-
-  .upload-button {
-    padding: 10px 20px;
-    font-size: 14px;
-  }
-
-  .drag-text {
-    font-size: 14px;
-  }
-
-  .selected-file {
-    position: relative;
-    bottom: auto;
-    left: auto;
-    right: auto;
-    margin-top: 20px;
-  }
-
-  .loading-content {
-    padding: 30px 20px;
   }
 }
