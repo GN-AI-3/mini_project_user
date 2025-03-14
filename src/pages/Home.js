@@ -167,11 +167,13 @@ const Home = () => {
       </div>
 
       <div className="overlay-content">
-      <h1 className="main-title">나는 어떤 고등학생?</h1>
+      <h1 className="main-title">추억 속 나를 만나다.</h1>
+      <h2 className="sub-title">&lt;AI 활용 학교생활기록부 리마인더&gt;</h2>
       <div className="instructions">
         <p className="instruction-text">
           {/* <span className="instruction-icon">ℹ️</span> */}
-          학교생활기록부를 이용해 고등학교 시절의 나를 알아볼 수 있어요.
+          학교생활기록부는 단순한 성적표가 아니라 한때의 노력과 성취, 성장의 기록이 담긴 특별한 문서입니다. <br></br>
+          목표를 위해 노력했던 그 시절의 나를 추억해 보아요.
           <br />
           <br/>
           <span className="warning-text">
