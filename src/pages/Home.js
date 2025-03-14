@@ -111,7 +111,7 @@ const Home = () => {
     formData.append("file", file);
 
     try {
-      const response = await fetch("http://localhost:8000/test", {
+      const response = await fetch("http://localhost:8000/process-pdf", {
         method: "POST",
         body: formData,
       });
