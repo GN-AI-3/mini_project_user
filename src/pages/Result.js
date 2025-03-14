@@ -3,7 +3,7 @@ import { useNavigate, useLocation } from "react-router-dom";
 import html2canvas from "html2canvas";  // html2canvas 임포트
 import "../styles/Result.css";
 import blackboardEraser from "../images/blackboardEraser.png"; // 이미지 import
-import testImage from "../images/ppp.png"; // 이미지 import
+import testImage from "../images/test.png"; // 이미지 import
 
 const Result = () => {
   const navigate = useNavigate();
@@ -14,13 +14,14 @@ const Result = () => {
 
   // useEffect is always called, just apply the logic conditionally inside
   useEffect(() => {
+    setImageUrl(testImage); // 예시로 testImage를 사용
     if (fileName) {
       // 이미지를 설정
       //  setImageUrl(fileName);
-      setImageUrl(testImage); // 예시로 testImage를 사용
+      
     }
   }, [fileName]); // fileName 변경될 때마다 실행됩니다.
-
+ 
   // 클립보드에 이미지 URL 복사하기
   const handleCopyImageUrl = () => {
     if (imageUrl) {
@@ -51,15 +52,15 @@ const Result = () => {
   };
 
   // 데이터가 없는 경우 홈으로 리다이렉트
-  if (!results) {
-    return (
-      <div className="no-data">
-        <h2>분석 결과가 없습니다.</h2>
-        <p>분석을 먼저 진행해주세요.</p>
-        <button onClick={() => navigate("/")}>홈으로 돌아가기</button>
-      </div>
-    );
-  }
+  // if (!results) {
+  //   return (
+  //     <div className="no-data">
+  //       <h2>분석 결과가 없습니다.</h2>
+  //       <p>분석을 먼저 진행해주세요.</p>
+  //       <button onClick={() => navigate("/")}>홈으로 돌아가기</button>
+  //     </div>
+  //   );
+  // }
 
   return (
     <div className="result">
