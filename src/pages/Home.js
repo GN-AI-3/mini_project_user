@@ -9,10 +9,9 @@ const Home = () => {
   const [progress, setProgress] = useState(0);
   const fileInputRef = useRef(null);
   const progressIntervalRef = useRef(null);
-  const { toggle } = useToggle();
-  // const navigate = useNavigate();
+  const { toggle, setIsToggled } = useToggle();
+  const isCanceledRef = useRef(false);
 
-  // 컴포넌트가 언마운트될 때 interval 정리
   useEffect(() => {
     return () => {
       if (progressIntervalRef.current) {
@@ -97,70 +96,63 @@ const Home = () => {
 
   const handleAnalyze = async (e) => {
     e.preventDefault();
-
     if (!file) {
       alert("PDF 파일을 업로드해주세요.");
       return;
     }
-
+  
     setLoading(true);
+    isCanceledRef.current = false;
     startProgressSimulation();
-
-    // 여기서 파일 업로드 및 분석 API 호출 로직을 구현할 수 있습니다.
-    // 예시 코드:
+  
     const formData = new FormData();
     formData.append("file", file);
-
+  
     try {
       const response = await fetch("http://localhost:8000/process-pdf", {
         method: "POST",
         body: formData,
       });
-
+  
       const data = await response.json();
       console.log(data);
-
-      // 실제 API 연동 시 주석 해제하고 아래 코드는 제거
+  
       setTimeout(() => {
-        // 타이머 정리
         if (progressIntervalRef.current) {
           clearInterval(progressIntervalRef.current);
         }
-
-        // 분석 완료 표시
+  
         setProgress(100);
-
-        // 약간의 지연 후 결과 페이지로 이동
+  
         setTimeout(() => {
+          if (isCanceledRef.current) return;
           setLoading(false);
-          // 분석 결과 페이지로 이동
-          // navigate("/result", {
-          //   state: {
-          //     fileName: file.name,
-          //     // 테스트용 더미 데이터
-          //     results: {
-          //       summary: "생활기록부 분석 결과입니다.",
-          //       details: ["활동내역 1", "활동내역 2", "활동내역 3"],
-          //       recommendations: ["추천사항 1", "추천사항 2"],
-          //     },
-          //   },
-          // });
           toggle();
         }, 500);
-      }, 2000); // 테스트를 위한 2초 지연
+      }, 2000);
     } catch (error) {
       console.error("분석 중 오류 발생:", error);
-
-      // 타이머 정리
+  
       if (progressIntervalRef.current) {
         clearInterval(progressIntervalRef.current);
       }
-
+  
       setLoading(false);
       setProgress(0);
+      setIsToggled(false);
       alert("분석 중 오류가 발생했습니다. 다시 시도해주세요.");
     }
-  };
+  };  
+
+  const cancelProgress = () => {
+    isCanceledRef.current = true;
+    if (progressIntervalRef.current) {
+      clearInterval(progressIntervalRef.current);
+    }
+    setProgress(0);
+    setLoading(false);
+    setIsToggled(false);
+  };    
 
   return (
     <div className="home-container">
@@ -264,7 +256,7 @@ const Home = () => {
             className="analyze-button"
             disabled={!file || loading}
           >
-            {loading ? "생활기록부를 분석 중이에요." : "결과 보기"}
+            결과 보기
           </button>
         </form>
       ) : (
@@ -274,7 +266,7 @@ const Home = () => {
           <p className="progress-text">{Math.round(progress)}% 완료</p>
           <p className="loading-text">생활기록부를 분석 중입니다...<br/></p>
           <p className="tip">
-            TIP: 알고 계셨나요? 배경의 칠판은 진짜랍니다.
+            TIP: 알고 계셨나요? 배경의 칠판은 단순한 장식이 아니랍니다.
           </p>
           <div className="progress-container">
             <div
@@ -283,6 +275,13 @@ const Home = () => {
             >
             </div>
           </div>
+          <button
+            type="button"
+            className="cancel-button"
+            onClick={cancelProgress}
+          >
+            중단
+          </button>
         </div>
       )}
       </div>

@@ -116,12 +116,12 @@ body {
   align-items: center;
   justify-content: center;
   padding: 12px 24px;
-  background-color: #4b0aff;
+  background-color: #1c2978;
   color: white;
   border: none;
   border-radius: 50px;
-  font-size: 16px;
-  font-weight: 600;
+  font-size: 18px;
+  font-weight: 500;
   cursor: pointer;
   transition: all 0.3s ease;
   box-shadow: 0 4px 8px rgba(75, 10, 255, 0.2);
@@ -185,8 +185,8 @@ body {
   width: 100%;
   margin-top: 15px;
   padding: 15px;
-  font-size: 18px;
-  font-weight: 600;
+  font-size: 24px;
+  font-weight: 500;
   color: white;
   background-color: #4a90e2;
   border: none;
@@ -227,6 +227,21 @@ body {
 
 .progress-text, .loading-text {
   text-align: center;
+}
+
+.cancel-button {
+  background-color: #ff4d4d;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 5px;
+  margin-top: 20px;
+}
+
+.cancel-button:hover {
+  background-color: #ff1a1a;
 }
 
 @keyframes spin {

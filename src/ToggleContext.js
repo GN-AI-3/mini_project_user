@@ -8,7 +8,7 @@ export const ToggleProvider = ({ children }) => {
   const toggle = () => setIsToggled((prev) => !prev);
 
   return (
-    <ToggleContext.Provider value={{ isToggled, toggle }}>
+    <ToggleContext.Provider value={{ isToggled, setIsToggled, toggle }}>
       {children}
     </ToggleContext.Provider>
   );
