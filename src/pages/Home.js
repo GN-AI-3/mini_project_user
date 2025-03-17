@@ -1,7 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
 import "../styles/Home.css";
-import DrawingApp from "./DrawingApp";
+import { useToggle } from "../ToggleContext";
 
 const Home = () => {
   const [file, setFile] = useState(null);
@@ -10,7 +9,8 @@ const Home = () => {
   const [progress, setProgress] = useState(0);
   const fileInputRef = useRef(null);
   const progressIntervalRef = useRef(null);
-  const navigate = useNavigate();
+  const { toggle } = useToggle();
+  // const navigate = useNavigate();
 
   // 컴포넌트가 언마운트될 때 interval 정리
   useEffect(() => {
@@ -134,17 +134,18 @@ const Home = () => {
         setTimeout(() => {
           setLoading(false);
           // 분석 결과 페이지로 이동
-          navigate("/result", {
-            state: {
-              fileName: file.name,
-              // 테스트용 더미 데이터
-              results: {
-                summary: "생활기록부 분석 결과입니다.",
-                details: ["활동내역 1", "활동내역 2", "활동내역 3"],
-                recommendations: ["추천사항 1", "추천사항 2"],
-              },
-            },
-          });
+          // navigate("/result", {
+          //   state: {
+          //     fileName: file.name,
+          //     // 테스트용 더미 데이터
+          //     results: {
+          //       summary: "생활기록부 분석 결과입니다.",
+          //       details: ["활동내역 1", "활동내역 2", "활동내역 3"],
+          //       recommendations: ["추천사항 1", "추천사항 2"],
+          //     },
+          //   },
+          // });
+          toggle();
         }, 500);
       }, 2000); // 테스트를 위한 2초 지연
     } catch (error) {
@@ -163,26 +164,22 @@ const Home = () => {
 
   return (
     <div className="home-container">
-      <div className="drawing-background">
-        <DrawingApp />
-      </div>
-
       <div className="overlay-content">
-      <h1 className="main-title">추억 속 나를 만나다.</h1>
-      <h2 className="sub-title">&lt;AI 활용 학교생활기록부 리마인더&gt;</h2>
-      <div className="instructions">
-        <p className="instruction-text">
-          {/* <span className="instruction-icon">ℹ️</span> */}
-          학교생활기록부는 단순한 성적표가 아니라 한때의 노력과 성취, 성장의 기록이 담긴 특별한 문서입니다. <br></br>
-          목표를 위해 노력했던 그 시절의 나를 추억해 보아요.
-          <br />
-          <br/>
+        <h1 className="main-title">추억 속 나를 만나다.</h1>
+        <p className="sub-title">&lt;AI 활용 학교생활기록부 리마인더&gt;</p>
+        
+        <div className="instructions">
+          <p className="instruction-text">
+            {/* <span className="instruction-icon">ℹ️</span> */}
+            학교생활기록부는 단순한 성적표가 아니라 한때의 노력과 성취, 성장의 기록이 담긴 특별한 문서입니다.<br/>
+            목표를 위해 노력했던 그 시절의 나를 추억해 보아요.<br/><br/>
           <span className="warning-text">
             ※ '고등학교' 생활기록부가 아니거나, 재학 중인 경우 결과가 만족스럽지 않을 수도 있어요. ※<br/>
           </span>
-        </p>
-      </div>
+          </p>
+        </div>
       <div className="upload-form">
+      {!loading ? (
         <form onSubmit={handleAnalyze} onDragEnter={handleDrag}>
           <div
             className={`file-upload-area ${dragActive ? "drag-active" : ""}`}
@@ -208,7 +205,7 @@ const Home = () => {
                 onClick={handleButtonClick}
               >
                 {/* <span className="plus-icon">+</span>  */}
-                파일 찾기
+                {file ? "파일 다시 찾기": "파일 찾기"}
               </button>
               <p className="drag-text">
                 {file ? "": "또는 여기에 PDF 파일 끌어다 놓기"}
@@ -242,7 +239,7 @@ const Home = () => {
                       fileInputRef.current.value = "";
                     }}
                   >
-                  <i className="fas fa-remove" title="X 버튼"/>
+                    <i className="fas fa-remove" title="X 버튼"/>
                   </button>
                 </div>
               </div>
@@ -267,30 +264,30 @@ const Home = () => {
             className="analyze-button"
             disabled={!file || loading}
           >
-            {loading ? "생활기록부를 분석 중이에요." : "분석 시작!"}
+            {loading ? "생활기록부를 분석 중이에요." : "결과 보기"}
           </button>
         </form>
-      </div>
-      </div>
-      {loading && (
-        <div className="loading-overlay">
-          <div className="loading-content">
-            <div className="loading-spinner"></div>
-            <p className="loading-text">생활기록부를 분석 중입니다...</p>
-            <p className="tip">
-              TIP: 알고 계셨나요? 기다리는 동안 배경에 낙서를 하실 수 있답니다.
-              </p>
-            <div className="progress-container">
-              <div
-                className="progress-bar"
-                style={{ width: `${progress}%` }}
-              ></div>
+      ) : (
+        <div className="file-upload-area">
+          <div className="loading-spinner">
+          </div>
+          <p className="progress-text">{Math.round(progress)}% 완료</p>
+          <p className="loading-text">생활기록부를 분석 중입니다...<br/></p>
+          <p className="tip">
+            TIP: 알고 계셨나요? 배경의 칠판은 진짜랍니다.
+          </p>
+          <div className="progress-container">
+            <div
+              className="progress-bar"
+              style={{ width: `${progress}%` }}
+            >
             </div>
-            <p className="progress-text">{Math.round(progress)}% 완료</p>
           </div>
         </div>
       )}
+      </div>
     </div>
+  </div>
   );
 };
 

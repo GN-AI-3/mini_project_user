@@ -8,7 +8,7 @@
 }
 
 body {
-  font-family: "Noto Sans KR", Arial, sans-serif;
+  font-family: "park";
   background-color: #f8f9fa;
   color: #333;
   line-height: 1.6;
@@ -18,4 +18,28 @@ body {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+}
+
+.drawing-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 0; /* Behind UI but still interactive */
+  pointer-events: auto; /* Allow drawing */
+}
+@font-face {
+  font-family: "bam";
+  src: url("../public/bam.ttf");
+}
+
+@font-face {
+  font-family: "jo";
+  src: url("../public/jo.otf");
+}
+
+@font-face {
+  font-family: "park";
+  src: url("../public/park.ttf");
 }

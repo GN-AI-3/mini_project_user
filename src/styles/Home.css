@@ -3,7 +3,8 @@
   width: 100%;
   margin: 0 auto;
   padding: 40px 20px;
-  font-family: "Noto Sans KR", Arial, sans-serif;
+  /* font-family: "Noto Sans KR", Arial, sans-serif; */
+  font-family: "park";
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -20,7 +21,7 @@ body {
 .main-title {
   text-align: center;
   color: #fff;
-  font-size: 2.5rem;
+  font-size: 3rem;
   font-style: italic;
   font-family: "jo";
 }
@@ -29,7 +30,7 @@ body {
   text-align: center;
   color: #fff;
   margin-bottom: 20px;
-  font-size: 1.5rem;
+  font-size: 1.25rem;
 }
 
 .instructions {
@@ -42,7 +43,8 @@ body {
 
 .instruction-text {
   text-align: center;
-  font-size: 15px;
+  /* font-size: 15px; */
+  font-size: 20px;
   line-height: 1.6;
   color: #555;
   margin: 0;
@@ -122,7 +124,6 @@ body {
   font-weight: 600;
   cursor: pointer;
   transition: all 0.3s ease;
-  margin-bottom: 20px;
   box-shadow: 0 4px 8px rgba(75, 10, 255, 0.2);
 }
 
@@ -132,16 +133,11 @@ body {
   box-shadow: 0 6px 12px rgba(75, 10, 255, 0.3);
 }
 
-.plus-icon {
-  font-size: 20px;
-  margin-right: 8px;
-  font-weight: 300;
-}
-
 .drag-text {
+  position: absolute;
   color: #777;
   font-size: 16px;
-  margin: 0;
+  margin-top: 175px;
 }
 
 .selected-file {
@@ -209,11 +205,9 @@ body {
 }
 
 .loading-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  position: absolute;
+  top: 50%;
+  right: 50%;
   background-color: rgba(255, 255, 255, 0.9);
   display: flex;
   justify-content: center;
@@ -231,6 +225,10 @@ body {
   margin: 0 auto 20px;
 }
 
+.progress-text, .loading-text {
+  text-align: center;
+}
+
 @keyframes spin {
   0% {
     transform: rotate(0deg);
@@ -238,16 +236,6 @@ body {
   100% {
     transform: rotate(360deg);
   }
-}
-
-.drawing-background {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  z-index: 0; /* Behind UI but still interactive */
-  pointer-events: auto; /* Allow drawing */
 }
 
 .overlay-content {
@@ -285,4 +273,9 @@ body {
 @font-face {
   font-family: "jo";
   src: url("../../public/jo.otf");
+}
+
+@font-face {
+  font-family: "park";
+  src: url("../../public/park.ttf");
 }

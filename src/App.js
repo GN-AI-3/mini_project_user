@@ -1,20 +1,27 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "./App.css";
+import DrawingApp from "./pages/DrawingApp";
 import Home from "./pages/Home";
 import Result from "./pages/Result";
-import DrawingApp from "./pages/DrawingApp";
+import { ToggleProvider, useToggle } from "./ToggleContext";
 
 function App() {
   return (
-    <Router>
-      <div className="App">
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/result" element={<Result />} />
-          <Route path="/draw" element={<DrawingApp />} />
-        </Routes>
+    <ToggleProvider>
+      <AppContent />
+    </ToggleProvider>
+  );
+}
+
+function AppContent() {
+  const { isToggled } = useToggle();
+
+  return (
+    <div className="App">
+      <div className="drawing-background">
+        <DrawingApp />
       </div>
-    </Router>
+      {!isToggled ? <Home /> : <Result />}
+    </div>
   );
 }
 
