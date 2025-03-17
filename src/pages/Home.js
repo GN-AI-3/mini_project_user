@@ -210,7 +210,9 @@ const Home = () => {
                 {/* <span className="plus-icon">+</span>  */}
                 파일 찾기
               </button>
-              <p className="drag-text">또는 여기에 PDF 파일 끌어다 놓기</p>
+              <p className="drag-text">
+                {file ? "": "또는 여기에 PDF 파일 끌어다 놓기"}
+              </p>
             </div>
 
             {file && (
@@ -240,7 +242,7 @@ const Home = () => {
                       fileInputRef.current.value = "";
                     }}
                   >
-                    ×
+                  <i className="fas fa-remove" title="X 버튼"/>
                   </button>
                 </div>
               </div>
