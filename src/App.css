@@ -26,6 +26,45 @@ body {
   z-index: 0; /* Behind UI but still interactive */
   pointer-events: auto; /* Allow drawing */
 }
+
+.noisy-person-text {
+  color: white;
+  transform: rotate(-3deg);
+  position: fixed;
+  z-index: 999;
+  right: 2%;
+  top: 30%;
+  font-size: 50px;
+}
+
+.pranksters-person-text{
+  color: white;
+  transform: rotate(3deg);
+  position: fixed;
+  z-index: 999;
+  left: 2%;
+  top: 20%;
+  font-size: 50px;
+}
+
+.blackboardEraser-img{
+  position: fixed;
+  z-index: 999;
+    width: 20%;
+    bottom: 13%;
+    right: 0%;
+}
+
+.BlackboardGraffiti-img{
+  position: fixed;
+  z-index: 999;
+  width: 500px;
+  left: 4%;
+  bottom: 15%;
+  rotate: inherit;
+  transform: rotate(15deg);
+}
+
 @font-face {
   font-family: "bam";
   src: url("../public/bam.ttf");
