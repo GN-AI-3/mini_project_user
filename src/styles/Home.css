@@ -3,7 +3,6 @@
   width: 100%;
   margin: 0 auto;
   padding: 40px 20px;
-  /* font-family: "Noto Sans KR", Arial, sans-serif; */
   font-family: "park";
   min-height: 100vh;
   display: flex;
@@ -21,9 +20,9 @@ body {
 .main-title {
   text-align: center;
   color: #fff;
-  font-size: 3rem;
+  font-size: 4rem;
   font-style: italic;
-  font-family: "jo";
+  font-family: "Ownglyph_ryurue-Rg";
 }
 
 .sub-title {
@@ -278,19 +277,4 @@ body {
     padding: 40px 15px;
     min-height: 200px;
   }
-}
-
-@font-face {
-  font-family: "bam";
-  src: url("../../public/bam.ttf");
-}
-
-@font-face {
-  font-family: "jo";
-  src: url("../../public/jo.otf");
-}
-
-@font-face {
-  font-family: "park";
-  src: url("../../public/park.ttf");
 }
