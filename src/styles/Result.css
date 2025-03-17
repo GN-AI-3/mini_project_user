@@ -6,21 +6,14 @@
   font-style: normal;
 }
 
-
-.result{
-  width: 100%;
-  background-color: #194038;
-  z-index: 1;
-}
-
 .result-container {
   max-width: 700px;
   display: flex;
   margin: 0 auto;
   padding: 40px 20px;
-  font-family: "Noto Sans KR", Arial, sans-serif;
   justify-content: center;
   flex-direction: column;
+  z-index: 1;
 }
 
 .result-header {
@@ -32,7 +25,7 @@
 
 .result-header h1 {
   font-size: 2.2rem;
-  font-family: 'HakgyoansimBunpilR', sans-serif;
+  /* font-family: 'HakgyoansimBunpilR', sans-serif; */
   color: white;
   margin: 0;
 }

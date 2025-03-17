@@ -4,11 +4,10 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  
+  font-family: "park";
 }
 
 body {
-  font-family: "park";
   background-color: #f8f9fa;
   color: #333;
   line-height: 1.6;

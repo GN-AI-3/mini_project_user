@@ -46,7 +46,7 @@ const Result = () => {
   };
 
   return (
-    <div className="result">
+      <div className="result-container">
         <div className="result-header">
           <h1>분석 결과</h1>
           <button className="back-button" onClick={toggle}>
@@ -60,16 +60,15 @@ const Result = () => {
           <p>이미지 로드 실패</p>
         )}
 
-        <div className="result-actions">
-          <button className="action-button" onClick={handleSaveAsPNG}>
-            PNG로 저장
-          </button>
-          <button className="action-button" onClick={handleCopyImageUrl}>
-            이미지 URL 복사
-          </button>
-        </div>
-      {/* </div> */}
-    </div>
+          <div className="result-actions">
+            <button className="action-button" onClick={handleSaveAsPNG}>
+              PNG로 저장
+            </button>
+            <button className="action-button" onClick={handleCopyImageUrl}>
+              이미지 URL 복사
+            </button>
+          </div>
+      </div>
   );
 };
 
