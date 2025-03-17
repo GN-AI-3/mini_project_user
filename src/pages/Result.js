@@ -50,7 +50,7 @@ const Result = () => {
       <div className="result-header">
         <p>분석 결과</p>
         <button className="back-button" onClick={toggle}>
-          새 분석 시작하기
+          다시하기
         </button>
       </div>
 
