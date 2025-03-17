@@ -46,29 +46,29 @@ const Result = () => {
   };
 
   return (
-      <div className="result-container">
-        <div className="result-header">
-          <h1>분석 결과</h1>
-          <button className="back-button" onClick={toggle}>
-            새 분석 시작하기
-          </button>
-        </div>
-
-        {imageUrl ? (
-          <img src={imageUrl} alt="Processed Result" className="result-image" />
-        ) : (
-          <p>이미지 로드 실패</p>
-        )}
-
-          <div className="result-actions">
-            <button className="action-button" onClick={handleSaveAsPNG}>
-              PNG로 저장
-            </button>
-            <button className="action-button" onClick={handleCopyImageUrl}>
-              이미지 URL 복사
-            </button>
-          </div>
+    <div className="result-container">
+      <div className="result-header">
+        <p>분석 결과</p>
+        <button className="back-button" onClick={toggle}>
+          새 분석 시작하기
+        </button>
       </div>
+
+      {imageUrl ? (
+        <img src={imageUrl} alt="Processed Result" className="result-image" />
+      ) : (
+        <p>이미지 로드 실패</p>
+      )}
+
+      <div className="result-actions">
+        <button className="action-button" onClick={handleSaveAsPNG}>
+          PNG로 저장
+        </button>
+        <button className="action-button" onClick={handleCopyImageUrl}>
+          이미지 URL 복사
+        </button>
+      </div>
+    </div>
   );
 };
 
