@@ -64,8 +64,9 @@ const Result = () => {
   // }
 
   return (
-    <div className="result">
-      <p className="noisy-person-text">떠든 사람 : ㅁㅁㅁ</p>
+    <div>
+    {/* <div className="result"> */}
+      {/* <p className="noisy-person-text">떠든 사람 : ㅁㅁㅁ</p>
       <p className="pranksters-person-text">
   장난친 사람 : ㅁㅁㅁ<br />
  
@@ -75,7 +76,7 @@ const Result = () => {
  
       <img className="blackboardEraser-img" src={blackboardEraser} alt="My Image" />
       
-      <div className="result-container">
+      <div className="result-container"> */}
         <div className="result-header">
           <h1>분석 결과</h1>
           <button className="back-button" onClick={() => navigate("/")}>
@@ -97,7 +98,7 @@ const Result = () => {
             이미지 URL 복사
           </button>
         </div>
-      </div>
+      {/* </div> */}
     </div>
   );
 };
