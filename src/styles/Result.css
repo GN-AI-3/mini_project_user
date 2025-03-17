@@ -12,11 +12,10 @@
   background-color: #194038;
   z-index: 1;
 }
+
 .result-container {
- 
   max-width: 700px;
-  display: flex
-;
+  display: flex;
   margin: 0 auto;
   padding: 40px 20px;
   font-family: "Noto Sans KR", Arial, sans-serif;
