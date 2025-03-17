@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import html2canvas from "html2canvas";
 import "../styles/Result.css";
 import blackboardEraser from "../images/blackboardEraser.png";
-import testImage from "../images/test.png";
+import testImage from "../images/test.jpg";
 import BlackboardGraffiti from "../images/Blackboard-graffiti.png"; 
 import { useToggle } from "../ToggleContext";
 
@@ -32,18 +32,22 @@ const Result = () => {
     }
   };
 
-  // PNG로 저장하는 함수
   const handleSaveAsPNG = () => {
     const element = document.querySelector('.result-container');
-
+  
+    const buttons = document.querySelectorAll('.result-actions, .back-button');
+    buttons.forEach(button => button.style.display = 'none');
+  
     html2canvas(element).then((canvas) => {
       const imgData = canvas.toDataURL("image/png");
       const link = document.createElement('a');
       link.href = imgData;
       link.download = 'result.png';
       link.click();
+  
+      buttons.forEach(button => button.style.display = '');
     });
-  };
+  };  
 
   return (
     <div className="result-container">
