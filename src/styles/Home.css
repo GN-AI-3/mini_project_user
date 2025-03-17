@@ -115,12 +115,12 @@ body {
   align-items: center;
   justify-content: center;
   padding: 12px 24px;
-  background-color: #4b0aff;
+  background-color: #282d80;
   color: white;
   border: none;
   border-radius: 50px;
   font-size: 16px;
-  font-weight: 600;
+  font-weight: 400;
   cursor: pointer;
   transition: all 0.3s ease;
   box-shadow: 0 4px 8px rgba(75, 10, 255, 0.2);
@@ -185,7 +185,7 @@ body {
   margin-top: 15px;
   padding: 15px;
   font-size: 18px;
-  font-weight: 600;
+  font-weight: 400;
   color: white;
   background-color: #4a90e2;
   border: none;
