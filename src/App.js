@@ -27,7 +27,7 @@ function AppContent() {
       <div className="drawing-background">
         <DrawingApp />
       </div>
-      {!isToggled ? <Home /> : <Result />}
+      {!apiData ? <Home /> : <Result data={apiData} />}
     </div>
   );
 }
