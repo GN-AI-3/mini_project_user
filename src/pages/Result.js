@@ -5,7 +5,7 @@ import { useAppContext } from "../AppContext";
 import sample from "../response_1742266857586.json"
 
 const Result = () => {
-  const { imageData, toggle } = useAppContext();
+  const { imageData, toggle, setName } = useAppContext();
   const [imageUrl, setImageUrl] = useState("");
 
   // Update image URL when imageData changes
@@ -17,6 +17,11 @@ const Result = () => {
       setImageUrl(`data:image/png;base64,${sample.image}`);
     }
   }, [imageData]);
+
+  const backToHome = () => {
+    setName("ㅁㅁㅁ");
+    toggle();
+  }
 
   // Copy image URL to clipboard
   const handleCopyImageUrl = async () => {
@@ -50,7 +55,7 @@ const Result = () => {
     <div className="result-container">
       <div className="result-header">
         <p>분석 결과</p>
-        <button className="back-button no-capture" onClick={toggle}>
+        <button className="back-button no-capture" onClick={backToHome}>
           다시하기
         </button>
       </div>
