@@ -9,7 +9,7 @@ const Home = () => {
   const [progress, setProgress] = useState(0);
   const fileInputRef = useRef(null);
   const progressIntervalRef = useRef(null);
-  const { setImageData, toggle, setIsToggled } = useAppContext();
+  const { setImageData, toggle, setIsToggled, setName } = useAppContext();
   const isCanceledRef = useRef(false);
 
   useEffect(() => {
@@ -109,13 +109,13 @@ const Home = () => {
     formData.append("file", file);
   
     try {
-      const response = await fetch("http://localhost:8000/process-pdf", {
+      await fetch("http://localhost:8000/process-pdf", {
         method: "POST",
         body: formData,
       });
   
-      const data = await response.json();
-      setImageData(data.image);
+      setImageData(formData.image);
+      setName(formData.name);
 
       if (progressIntervalRef.current) clearInterval(progressIntervalRef.current);
       setProgress(100);

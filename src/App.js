@@ -13,14 +13,22 @@ function App() {
 }
 
 function AppContent() {
-  const { isToggled } = useAppContext();
+  const { isToggled, name } = useAppContext();
 
   return (
     <div className="App">
+      {name ? (
+        <div>
+          <p className="noisy-person-text">떠든 사람 : {name}</p>
+          <p className="pranksters-person-text">장난친 사람 : {name}</p>
+        </div>
+      ) : (
+        null
+      )}
       <div className="drawing-background">
         <DrawingApp />
       </div>
-      {!isToggled ? <Home /> : <Result />}
+      {isToggled ? <Home /> : <Result />}
     </div>
   );
 }

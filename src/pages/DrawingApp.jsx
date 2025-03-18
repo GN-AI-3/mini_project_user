@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import { useResizeDetector } from "react-resize-detector";
-import bgImage from "../images/Blackboard-bg.JPG"; 
+import bgImage from "../images/Blackboard-bg4.JPG"; 
 
 const DrawingApp = () => {
     const canvasRef = useRef(null);

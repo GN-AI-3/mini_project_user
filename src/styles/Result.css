@@ -10,10 +10,21 @@
   max-width: 700px;
   display: flex;
   margin: 0 auto;
-  padding: 40px 20px;
+  padding: 20px;
   justify-content: center;
   flex-direction: column;
   z-index: 1;
+}
+
+.result-scrollable-area {
+  max-height: 70vh;
+  overflow: auto;
+  z-index: 1;
+  border-radius: 20px;
+}
+
+.result-scrollable-area::-webkit-scrollbar {
+  display: none;
 }
 
 .result-header {
@@ -100,9 +111,9 @@
   margin-top: 40px;
   justify-content: center;
 }
+
 .result-image{
-  border:1px solid #eaeaea;
-  border-radius: 20px;
+  display: block;
 }
 .action-button {
   padding: 12px 25px;

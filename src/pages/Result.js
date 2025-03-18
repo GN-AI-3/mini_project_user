@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import html2canvas from "html2canvas";
 import "../styles/Result.css";
 import { useAppContext } from "../AppContext";
+import sample from "../response_1742266857586.json"
 
 const Result = () => {
   const { imageData, toggle } = useAppContext();
@@ -11,6 +12,9 @@ const Result = () => {
   useEffect(() => {
     if (imageData) {
       setImageUrl(`data:image/png;base64,${imageData}`);
+    }
+    if (sample.image) {
+      setImageUrl(`data:image/png;base64,${sample.image}`);
     }
   }, [imageData]);
 
@@ -50,12 +54,13 @@ const Result = () => {
           다시하기
         </button>
       </div>
-
-      {imageUrl ? (
-        <img src={imageUrl} alt="Processed Result" className="result-image" />
-      ) : (
-        <p>이미지 로드 실패</p>
-      )}
+      <div className="result-scrollable-area">
+        {imageUrl ? (
+          <img src={imageUrl} alt="Processed Result" className="result-image" />
+        ) : (
+          <img src={sample.image} alt="Processed Result" className="result-image" />
+        )}
+      </div>
 
       <div className="result-actions no-capture">
         <button className="action-button" onClick={handleSaveAsPNG}>
