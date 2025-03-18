@@ -15,7 +15,7 @@ function App() {
 }
 
 function AppContent() {
-  const { isToggled } = useToggle();
+  const { isToggled, apiData } = useToggle();
 
   return (
     <div className="App">
@@ -27,7 +27,7 @@ function AppContent() {
       <div className="drawing-background">
         <DrawingApp />
       </div>
-      {!isToggled ? <Home /> : <Result />}
+      {!apiData ? <Home /> : <Result data={apiData} />}
     </div>
   );
 }

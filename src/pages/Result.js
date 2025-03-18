@@ -6,8 +6,8 @@ import testImage from "../images/test.png";
 import BlackboardGraffiti from "../images/Blackboard-graffiti.png"; 
 import { useToggle } from "../ToggleContext";
 
-const Result = () => {
-  const { toggle } = useToggle();
+const Result = ({ data }) => {
+  const { toggle, setApiData } = useToggle();
   
   // State for image URL and results (dummy data used as placeholders)
   const [imageUrl, setImageUrl] = useState(testImage); // 기본 이미지 설정
@@ -49,7 +49,7 @@ const Result = () => {
     <div className="result-container">
       <div className="result-header">
         <p>분석 결과</p>
-        <button className="back-button" onClick={toggle}>
+        <button className="back-button" onClick={() => setApiData(null)}>
           새 분석 시작하기
         </button>
       </div>

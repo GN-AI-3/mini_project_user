@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import "../styles/Home.css";
 import { useToggle } from "../ToggleContext";
+import res from "../response_1742266857586.json"
 
 const Home = () => {
   const [file, setFile] = useState(null);
@@ -9,7 +10,7 @@ const Home = () => {
   const [progress, setProgress] = useState(0);
   const fileInputRef = useRef(null);
   const progressIntervalRef = useRef(null);
-  const { toggle } = useToggle();
+  const { toggle, setApiData } = useToggle();
   // const navigate = useNavigate();
 
   // 컴포넌트가 언마운트될 때 interval 정리
@@ -112,42 +113,44 @@ const Home = () => {
     formData.append("file", file);
 
     try {
-      const response = await fetch("http://localhost:8000/process-pdf", {
-        method: "POST",
-        body: formData,
-      });
+      // const response = await fetch("http://localhost:8000/process-pdf", {
+      //   method: "POST",
+      //   body: formData,
+      // });
 
-      const data = await response.json();
-      console.log(data);
+      setApiData(res)
 
-      // 실제 API 연동 시 주석 해제하고 아래 코드는 제거
-      setTimeout(() => {
-        // 타이머 정리
-        if (progressIntervalRef.current) {
-          clearInterval(progressIntervalRef.current);
-        }
+      // const data = await response.json();
+      // console.log(data);
 
-        // 분석 완료 표시
-        setProgress(100);
+      // // 실제 API 연동 시 주석 해제하고 아래 코드는 제거
+      // setTimeout(() => {
+      //   // 타이머 정리
+      //   if (progressIntervalRef.current) {
+      //     clearInterval(progressIntervalRef.current);
+      //   }
 
-        // 약간의 지연 후 결과 페이지로 이동
-        setTimeout(() => {
-          setLoading(false);
-          // 분석 결과 페이지로 이동
-          // navigate("/result", {
-          //   state: {
-          //     fileName: file.name,
-          //     // 테스트용 더미 데이터
-          //     results: {
-          //       summary: "생활기록부 분석 결과입니다.",
-          //       details: ["활동내역 1", "활동내역 2", "활동내역 3"],
-          //       recommendations: ["추천사항 1", "추천사항 2"],
-          //     },
-          //   },
-          // });
-          toggle();
-        }, 500);
-      }, 2000); // 테스트를 위한 2초 지연
+      //   // 분석 완료 표시
+      //   setProgress(100);
+
+      //   // 약간의 지연 후 결과 페이지로 이동
+      //   setTimeout(() => {
+      //     setLoading(false);
+      //     // 분석 결과 페이지로 이동
+      //     // navigate("/result", {
+      //     //   state: {
+      //     //     fileName: file.name,
+      //     //     // 테스트용 더미 데이터
+      //     //     results: {
+      //     //       summary: "생활기록부 분석 결과입니다.",
+      //     //       details: ["활동내역 1", "활동내역 2", "활동내역 3"],
+      //     //       recommendations: ["추천사항 1", "추천사항 2"],
+      //     //     },
+      //     //   },
+      //     // });
+      //     toggle();
+      //   }, 500);
+      // }, 2000); // 테스트를 위한 2초 지연
     } catch (error) {
       console.error("분석 중 오류 발생:", error);
 
