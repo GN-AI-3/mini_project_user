@@ -2,8 +2,6 @@ import "./App.css";
 import DrawingApp from "./pages/DrawingApp";
 import Home from "./pages/Home";
 import Result from "./pages/Result";
-import blackboardEraser from "./images/blackboardEraser.png"; // 이미지 import
-import BlackboardGraffiti from "./images/Blackboard-graffiti.png"; // 이미지 import
 import { AppProvider, useAppContext } from "./AppContext";
 
 function App() {
@@ -19,15 +17,10 @@ function AppContent() {
 
   return (
     <div className="App">
-      <p className="noisy-person-text">떠든 사람 : ㅁㅁㅁ</p>
-      <p className="pranksters-person-text">장난친 사람 : ㅁㅁㅁ</p>
-      <img className="BlackboardGraffiti-img" src={BlackboardGraffiti} alt="BlackboardGraffiti" />
-      <img className="blackboardEraser-img" src={blackboardEraser} alt="blackboardEraser" />
-
       <div className="drawing-background">
         <DrawingApp />
       </div>
-      {!apiData ? <Home /> : <Result data={apiData} />}
+      {!isToggled ? <Home /> : <Result />}
     </div>
   );
 }
