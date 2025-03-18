@@ -2,7 +2,7 @@
   max-width: 800px;
   width: 100%;
   margin: 0 auto;
-  padding: 40px 20px;
+  padding-bottom: 100px;
   font-family: "park";
   min-height: 100vh;
   display: flex;
@@ -256,10 +256,7 @@ body {
   position: relative;
   z-index: 1; /* Ensure UI is above the background */
   background: transparent;
-  padding: 20px;
-  border-radius: 10px;
   pointer-events: auto; /* Allow UI interactions */
-  margin-top: -200px;
 }
 
 @media (max-width: 600px) {
