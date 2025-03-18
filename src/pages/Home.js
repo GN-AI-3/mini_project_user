@@ -116,17 +116,13 @@ const Home = () => {
   
       const data = await response.json();
       setImageData(data.image);
-  
-      setTimeout(() => {
-        if (progressIntervalRef.current) clearInterval(progressIntervalRef.current);
-        setProgress(100);
-  
-        setTimeout(() => {
-          if (isCanceledRef.current) return;
-          setLoading(false);
-          toggle();
-        }, 500);
-      }, 2000);
+
+      if (progressIntervalRef.current) clearInterval(progressIntervalRef.current);
+      setProgress(100);
+
+      if (isCanceledRef.current) return;
+      setLoading(false);
+      toggle();
     } catch (error) {
       console.error("분석 중 오류 발생:", error);
       if (progressIntervalRef.current) clearInterval(progressIntervalRef.current);

@@ -31,7 +31,7 @@ const DrawingApp = () => {
         const ctx = canvas.getContext("2d");
     
         const img = new Image();
-        img.src = bgImage; // ✅ Importing ensures correct path
+        img.src = bgImage;
         img.onload = () => {
             ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
             saveHistory();
