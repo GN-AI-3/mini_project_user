@@ -109,13 +109,14 @@ const Home = () => {
     formData.append("file", file);
   
     try {
-      await fetch("http://localhost:8000/process-pdf", {
+      const response = await fetch("http://localhost:8000/process-pdf", {
         method: "POST",
         body: formData,
       });
-  
-      setImageData(formData.image);
-      setName(formData.name);
+
+      const data = await response.json();
+      setImageData(data.image);
+      setName(data.name);
 
       if (progressIntervalRef.current) clearInterval(progressIntervalRef.current);
       setProgress(100);
