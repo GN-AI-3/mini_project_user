@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import { useResizeDetector } from "react-resize-detector";
+import bgImage from "../images/Blackboard-bg4.JPG"; 
 
 const DrawingApp = () => {
     const canvasRef = useRef(null);
@@ -28,9 +29,13 @@ const DrawingApp = () => {
     useEffect(() => {
         const canvas = canvasRef.current;
         const ctx = canvas.getContext("2d");
-        ctx.fillStyle = "#194038";
-        ctx.fillRect(0, 0, canvasWidth, canvasHeight);
-        saveHistory();
+    
+        const img = new Image();
+        img.src = bgImage;
+        img.onload = () => {
+            ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+            saveHistory();
+        };
     }, []);
 
     const getCanvasCoordinates = (event) => {
