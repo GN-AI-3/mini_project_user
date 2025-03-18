@@ -58,7 +58,7 @@ const Result = () => {
         {imageUrl ? (
           <img src={imageUrl} alt="Processed Result" className="result-image" />
         ) : (
-          <img src={sample.image} alt="Processed Result" className="result-image" />
+          <p>이미지 인식 실패</p>
         )}
       </div>
 
