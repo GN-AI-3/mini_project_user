@@ -167,9 +167,12 @@ const DrawingApp = () => {
     const handleClear = () => {
         const canvas = canvasRef.current;
         const ctx = canvas.getContext("2d");
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-        ctx.fillStyle = "#194038";
-        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        const img = new Image();
+        img.src = bgImage;
+        img.onload = () => {
+            ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+            saveHistory();
+        };
 
         setTextBoxes([]);
         setImageFile(null);
