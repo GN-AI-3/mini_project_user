@@ -2,20 +2,20 @@ import "./App.css";
 import DrawingApp from "./pages/DrawingApp";
 import Home from "./pages/Home";
 import Result from "./pages/Result";
-import { ToggleProvider, useToggle } from "./ToggleContext";
 import blackboardEraser from "./images/blackboardEraser.png"; // 이미지 import
 import BlackboardGraffiti from "./images/Blackboard-graffiti.png"; // 이미지 import
+import { AppProvider, useAppContext } from "./AppContext";
 
 function App() {
   return (
-    <ToggleProvider>
+    <AppProvider>
       <AppContent />
-    </ToggleProvider>
+    </AppProvider>
   );
 }
 
 function AppContent() {
-  const { isToggled } = useToggle();
+  const { isToggled } = useAppContext();
 
   return (
     <div className="App">

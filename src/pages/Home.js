@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
 import "../styles/Home.css";
-import { useToggle } from "../ToggleContext";
+import { useAppContext } from "../AppContext";
 
 const Home = () => {
   const [file, setFile] = useState(null);
@@ -9,7 +9,7 @@ const Home = () => {
   const [progress, setProgress] = useState(0);
   const fileInputRef = useRef(null);
   const progressIntervalRef = useRef(null);
-  const { toggle, setIsToggled } = useToggle();
+  const { setImageData, toggle, setIsToggled } = useAppContext();
   const isCanceledRef = useRef(false);
 
   useEffect(() => {
@@ -115,13 +115,10 @@ const Home = () => {
       });
   
       const data = await response.json();
-      console.log(data);
+      setImageData(data.image);
   
       setTimeout(() => {
-        if (progressIntervalRef.current) {
-          clearInterval(progressIntervalRef.current);
-        }
-  
+        if (progressIntervalRef.current) clearInterval(progressIntervalRef.current);
         setProgress(100);
   
         setTimeout(() => {
@@ -132,17 +129,14 @@ const Home = () => {
       }, 2000);
     } catch (error) {
       console.error("분석 중 오류 발생:", error);
-  
-      if (progressIntervalRef.current) {
-        clearInterval(progressIntervalRef.current);
-      }
+      if (progressIntervalRef.current) clearInterval(progressIntervalRef.current);
   
       setLoading(false);
       setProgress(0);
       setIsToggled(false);
       alert("분석 중 오류가 발생했습니다. 다시 시도해주세요.");
     }
-  };  
+  };
 
   const cancelProgress = () => {
     isCanceledRef.current = true;
